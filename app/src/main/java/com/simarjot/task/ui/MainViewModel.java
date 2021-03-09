@@ -15,7 +15,11 @@ import com.simarjot.task.ui.state.Error;
 import com.simarjot.task.ui.state.Loading;
 import com.simarjot.task.ui.state.State;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 public class MainViewModel extends ViewModel {
     private final QuestionRepository questionRepository;
@@ -33,7 +37,7 @@ public class MainViewModel extends ViewModel {
 
     public void loadQuestions() {
         questionsState.setValue(new Loading<>());
-        questionRepository.getQuizzes(71696, 102, "2021-03-09").observeForever(value -> {
+        questionRepository.getQuizzes(71696, 102, "2021-03-9"/*getCurrentDate()*/).observeForever(value -> {
             if (value instanceof Success) {
                 List<QuestionDto> questionDtoList = ((Success<List<QuestionDto>>) value).getData();
                 questionsState.setValue(new DataFetched<>(questionDtoList));
@@ -42,5 +46,11 @@ public class MainViewModel extends ViewModel {
                 questionsState.setValue(new Error<>(reason));
             }
         });
+    }
+
+    private String getCurrentDate(){
+        Calendar calendar = GregorianCalendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return format.format(calendar.getTime());
     }
 }

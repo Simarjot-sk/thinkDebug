@@ -1,5 +1,6 @@
 package com.simarjot.task;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -10,9 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.simarjot.task.databinding.ActivityMainBinding;
 import com.simarjot.task.network.model.QuestionDto;
 import com.simarjot.task.ui.MainViewModel;
+import com.simarjot.task.ui.QuestionAdapter;
 import com.simarjot.task.ui.state.DataFetched;
 import com.simarjot.task.ui.state.Error;
 import com.simarjot.task.ui.state.Loading;
@@ -45,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
             if (questionsState instanceof DataFetched) {
                 List<QuestionDto> questionDtoList = ((DataFetched<List<QuestionDto>>) questionsState).data;
                 Snackbar.make(binding.getRoot(), questionDtoList.size() + " items loaded", Snackbar.LENGTH_SHORT).show();
+
+
+                QuestionAdapter questionAdapter = new QuestionAdapter(this, questionDtoList);
+                binding.viewPager.setAdapter(questionAdapter);
+
+                new TabLayoutMediator(binding.tabLayout, binding.viewPager, (tab, position) -> {
+                    tab.setText("Q: " + (position + 1));
+                }).attach();
             }
         });
     }

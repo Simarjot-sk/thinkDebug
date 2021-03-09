@@ -50,6 +50,14 @@ public class Option {
         this.optionImage = optionImage;
     }
 
+    public String getImageUrl() {
+        if (optionImage == null)
+            return "";
+        if (optionImage.isEmpty())
+            return "";
+        else return "https://www.studyadda.com/assets/quiz_image/option_image/" + optionImage;
+    }
+
     public int getAnswerStatus() {
         return answerStatus;
     }
