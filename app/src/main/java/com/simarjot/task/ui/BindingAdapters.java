@@ -2,6 +2,7 @@ package com.simarjot.task.ui;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
@@ -16,5 +17,11 @@ public class BindingAdapters {
             return;
         }
         Glide.with(imageView).load(url).into(imageView);
+    }
+
+    @BindingAdapter("text_visibility")
+    public static void setTextVisibility(TextView textView, String text){
+        int visibility = text == null || text.isEmpty() ? View.GONE : View.VISIBLE;
+        textView.setVisibility(visibility);
     }
 }

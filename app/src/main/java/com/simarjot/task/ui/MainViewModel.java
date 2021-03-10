@@ -7,17 +7,20 @@ import androidx.lifecycle.ViewModel;
 import com.simarjot.task.network.QuestionRepository;
 import com.simarjot.task.network.QuestionService;
 import com.simarjot.task.network.ServiceCreator;
+import com.simarjot.task.network.model.Option;
 import com.simarjot.task.network.model.QuestionDto;
 import com.simarjot.task.network.model.server_response.Failure;
 import com.simarjot.task.network.model.server_response.Success;
-import com.simarjot.task.ui.state.DataFetched;
-import com.simarjot.task.ui.state.Error;
-import com.simarjot.task.ui.state.Loading;
-import com.simarjot.task.ui.state.State;
+import com.simarjot.task.ui.model.SelectedOption;
+import com.simarjot.task.ui.model.state.DataFetched;
+import com.simarjot.task.ui.model.state.Error;
+import com.simarjot.task.ui.model.state.Loading;
+import com.simarjot.task.ui.model.state.State;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,6 +28,7 @@ public class MainViewModel extends ViewModel {
     private final QuestionRepository questionRepository;
     private final MutableLiveData<State<List<QuestionDto>>> questionsState =
             new MutableLiveData<>();
+    public List<Option> selectedOptions = new LinkedList<>();
 
     public MainViewModel() {
         QuestionService questionService = ServiceCreator.createService(QuestionService.class);

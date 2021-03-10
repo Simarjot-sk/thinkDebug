@@ -1,4 +1,4 @@
-package com.simarjot.task.ui.state;
+package com.simarjot.task.ui.model.state;
 
 public class Error<T> extends State<T> {
     public String errorMessage;

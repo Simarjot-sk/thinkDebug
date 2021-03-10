@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Task</string>
+    <string name="number">%s.</string>
+    <string name="options">Options</string>
 </resources>

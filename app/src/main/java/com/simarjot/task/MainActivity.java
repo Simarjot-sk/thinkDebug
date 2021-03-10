@@ -1,26 +1,21 @@
 package com.simarjot.task;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.simarjot.task.databinding.ActivityMainBinding;
 import com.simarjot.task.network.model.QuestionDto;
 import com.simarjot.task.ui.MainViewModel;
 import com.simarjot.task.ui.QuestionAdapter;
-import com.simarjot.task.ui.state.DataFetched;
-import com.simarjot.task.ui.state.Error;
-import com.simarjot.task.ui.state.Loading;
-import com.simarjot.task.ui.state.State;
+import com.simarjot.task.ui.model.state.DataFetched;
+import com.simarjot.task.ui.model.state.Error;
+import com.simarjot.task.ui.model.state.Loading;
 
 import java.util.List;
 

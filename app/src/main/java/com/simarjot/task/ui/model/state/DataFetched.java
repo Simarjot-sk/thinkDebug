@@ -1,4 +1,4 @@
-package com.simarjot.task.ui.state;
+package com.simarjot.task.ui.model.state;
 
 public class DataFetched<T> extends State<T>{
     public T data;

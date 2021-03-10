@@ -11,33 +11,57 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:background="#5fc7e6"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/questionText"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@{question.questionTitle}"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="@tools:sample/lorem[15]" />
+            android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/questionImage"
-            load_image="@{question.questionImageUrl}"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="5dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/questionText"
-            tools:src="@tools:sample/avatars" />
+            <TextView
+                android:id="@+id/questionText"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{question.questionTitle}"
+                android:textColor="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/lorem[15]" />
 
+            <ImageView
+                android:id="@+id/questionImage"
+                load_image="@{question.questionImageUrl}"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="5dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/questionText"
+                tools:src="@tools:sample/avatars" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/options_label"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/options"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/questionImage" />
+
+            <LinearLayout
+                android:id="@+id/options_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/options_label" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
