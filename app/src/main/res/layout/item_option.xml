@@ -37,18 +37,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="1." />
 
-            <TextView
+            <io.github.kexanie.library.MathView
                 android:id="@+id/option_text"
-                style="@style/TextAppearance.MaterialComponents.Body1"
                 text_visibility="@{option.optionName}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@{option.optionName}"
                 android:textColor="@android:color/black"
+                app:engine="MathJax"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/option_number"
                 app:layout_constraintTop_toTopOf="parent"
+                app:text="@{option.optionName}"
                 tools:text="@tools:sample/lorem[10]" />
 
             <ImageView

@@ -22,14 +22,15 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <TextView
+            <io.github.kexanie.library.MathView
                 android:id="@+id/questionText"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{question.questionTitle}"
                 android:textColor="@color/white"
+                app:engine="MathJax"
                 app:layout_constraintTop_toTopOf="parent"
+                app:text="@{question.questionTitle}"
                 tools:text="@tools:sample/lorem[15]" />
 
             <ImageView

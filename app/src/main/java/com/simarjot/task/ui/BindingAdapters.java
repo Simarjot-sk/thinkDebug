@@ -8,6 +8,8 @@ import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
 
+import io.github.kexanie.library.MathView;
+
 public class BindingAdapters {
 
     @BindingAdapter("load_image")
@@ -20,8 +22,9 @@ public class BindingAdapters {
     }
 
     @BindingAdapter("text_visibility")
-    public static void setTextVisibility(TextView textView, String text){
+    public static void setTextVisibility(View textView, String text){
         int visibility = text == null || text.isEmpty() ? View.GONE : View.VISIBLE;
         textView.setVisibility(visibility);
     }
+
 }
