@@ -26,5 +26,4 @@ public class BindingAdapters {
         int visibility = text == null || text.isEmpty() ? View.GONE : View.VISIBLE;
         textView.setVisibility(visibility);
     }
-
 }
