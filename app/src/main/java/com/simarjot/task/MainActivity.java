@@ -13,6 +13,7 @@ import com.simarjot.task.databinding.ActivityMainBinding;
 import com.simarjot.task.network.model.QuestionDto;
 import com.simarjot.task.ui.MainViewModel;
 import com.simarjot.task.ui.QuestionAdapter;
+import com.simarjot.task.ui.ShowSelectedOptionsDialog;
 import com.simarjot.task.ui.model.state.DataFetched;
 import com.simarjot.task.ui.model.state.Error;
 import com.simarjot.task.ui.model.state.Loading;
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
                     tab.setText("Q: " + (position + 1));
                 }).attach();
             }
+        });
+
+        binding.showSelectedOptionsButton.setOnClickListener((view) -> {
+            new ShowSelectedOptionsDialog().show(getSupportFragmentManager(), "show selected option dialog");
         });
     }
 }

@@ -11,7 +11,7 @@ import com.simarjot.task.network.model.Option;
 import com.simarjot.task.network.model.QuestionDto;
 import com.simarjot.task.network.model.server_response.Failure;
 import com.simarjot.task.network.model.server_response.Success;
-import com.simarjot.task.ui.model.SelectedOption;
+import com.simarjot.task.ui.model.Answer;
 import com.simarjot.task.ui.model.state.DataFetched;
 import com.simarjot.task.ui.model.state.Error;
 import com.simarjot.task.ui.model.state.Loading;
@@ -28,7 +28,7 @@ public class MainViewModel extends ViewModel {
     private final QuestionRepository questionRepository;
     private final MutableLiveData<State<List<QuestionDto>>> questionsState =
             new MutableLiveData<>();
-    public List<Option> selectedOptions = new LinkedList<>();
+    private final List<Option> selectedOptions = new LinkedList<>();
 
     public MainViewModel() {
         QuestionService questionService = ServiceCreator.createService(QuestionService.class);
@@ -52,9 +52,30 @@ public class MainViewModel extends ViewModel {
         });
     }
 
-    private String getCurrentDate(){
+    private String getCurrentDate() {
         Calendar calendar = GregorianCalendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return format.format(calendar.getTime());
+    }
+
+    public void selectOption(Option option) {
+        //removing option if an option already exists for the same question
+        int optionIndex = -1;
+        for (int i = 0; i < selectedOptions.size(); i++) {
+            Option optionItem = selectedOptions.get(i);
+            if (optionItem.getQuestionId() == option.getQuestionId()) {
+                optionIndex = i;
+            }
+        }
+        if (optionIndex != -1) {
+            selectedOptions.remove(optionIndex);
+        }
+
+        //adding the new option
+        selectedOptions.add(option);
+    }
+
+    public List<Option> getSelectedOptions() {
+        return selectedOptions;
     }
 }

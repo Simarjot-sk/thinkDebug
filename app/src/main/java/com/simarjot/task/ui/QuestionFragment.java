@@ -64,6 +64,8 @@ public class QuestionFragment extends Fragment {
         //selecting the newly selected item
         selectedOptionBinding = itemOptionBinding;
         itemOptionBinding.setIsSelected(true);
+
+        mainViewModel.selectOption(itemOptionBinding.getOption());
     }
 }
 
